@@ -1,0 +1,317 @@
+---
+title: "2021-03-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Makecondition
+
+```{r makecondition}
+library(reticulate)
+use_condaenv("r-reticulate")
+
+library(econR) # 經濟模型程式設計專題用
+```
+
+## Install packages
+
+Through Conda:
+```{r, eval=F}
+conda_install("r-reticulate",
+              packages=c("numpy", "pandas"))
+```
+
+Through PyPI:
+```{r, eval=FALSE}
+conda_install("r-reticulate",
+              packages=c("numpy", "pandas"),
+              pip = TRUE)
+```
+
+
+## Codes
+
+```{python}
+print("Hello, world.")
+```
+## Single element vector
+
+```{r}
+string1 = "Hello, world"
+num1 = 152
+boolean1 = TRUE
+boolean2 = T
+```
+
+
+```{python}
+string1 = "Hello, world"
+num1 = 152
+boolean1 = True # False
+```
+
+$$ U: X \rightarrow \mathcal{R}$$
+
+```{r}
+X
+```
+
+```{r}
+U = function(x){
+  assertthat::assert_that(
+    x %in% X,
+    msg="You should choose within the choice set"
+  )
+  
+  u <- {
+    
+  }
+  
+  return(u)
+}
+```
+
+## major features
+
+```{r}
+obj_R = c("Hello", "World.")
+obj_R[1]
+
+obj_R[1] = "Hi"
+print(obj_R)
+```
+
+```{r}
+obj_R[1]
+obj_R[[1]]
+```
+
+```{r}
+obj_R = c(first_word="Hello", second_word="World.")
+obj_R[1]
+obj_R[[1]]
+```
+
+
+```{python}
+obj_py = ["Hello", "World."]
+obj_py[0]
+
+obj_py[0] = "Hi"
+print(obj_py)
+```
+## list v.s. dictionary
+
+```{r}
+obj_R2 = list(
+  first_word="Hello",
+  second_word="World"
+)
+obj_R2[["first_word"]]
+```
+
+```{r}
+obj_R2["first_word"]
+```
+
+```{python}
+obj_py2 = {
+  "first_word": "Hello",
+  "second_word": "World"
+}
+
+```
+```{python}
+obj_py2["first_word"]
+```
+
+```{r}
+
+```
+
+
+"", ''
+
+"".."", """...""",
+
+## Modeling
+
+$$U: X \rightarrow \mathcal{R}$$
+
+```{r}
+X
+```
+
+```{r}
+U = function(x){
+  assertthat::assert_that(
+    x %in% X,
+    msg="You should choose within the choice set"
+  )
+  
+  u <- {
+    
+  }
+  
+  return(u)
+}
+```
+
+```{r}
+X=c("1 apple", "1 banana")
+X[[1]]
+X[[2]]
+```
+
+
+```{r}
+U(X[[1]])
+```
+
+## X
+
+```{r}
+choiceSet_basic0 = 
+  c(apple=1, banana=1)
+
+# one alternative
+choiceSet_basic0[1]
+
+# the other alternative
+choiceSet_basic0[2]
+```
+
+```{r}
+choiceSet_basic1 =
+  list(apple=1, banana=1)
+# one alternative
+choiceSet_basic1[[1]]
+# the other alternative
+choiceSet_basic1[[2]]
+```
+
+```{python}
+choiceSet_basic1 = {
+    "apple": 1, "banana": 1
+}
+```
+
+
+```{python}
+# one alternative
+choiceSet_basic1["apple"]
+# the other alternative
+choiceSet_basic1["banana"]
+```
+
+```{python}
+choiceSet_try1 = {
+  1: "1 banana",
+  2: "1 apple"
+}
+```
+```{python}
+choiceSet_try1[1]
+choiceSet_try1[2]
+```
+```{python}
+choiceSet_try2 = [
+  alternative1, alternative2
+]
+```
+
+
+```{python}
+choiceSet_try2[0]
+choiceSet_try2[1]
+```
+
+'apple' 1
+
+### solution 1
+
+```{python}
+choiceSet_try2 = {
+  0:["apple",1], 
+  1:["banana",2]
+}
+
+choiceSet_try2[1]
+```
+### solution 2: nested dictionary
+
+```{python}
+choiceSet_try2 = {
+  1: {"apple": 1},
+  2: {"banana": 1}
+}
+```
+
+
+```{python}
+choiceSet_try2[1]
+choiceSet_try2[2]
+```
+{key: value, key: value} : Dictionary
+{value1, value2} :SET
+
+### solutaion 3: set in dictionary
+
+```{python}
+choiceSet_try2 = {
+  0: {"apple",1},
+  1: {"banana",1}
+}
+choiceSet_try2[0]
+choiceSet_try2[1]
+```
+
+
+## solution 4: dictionary in dictionary
+
+```{python}
+choice_try2={
+1:{"apple":1},2:{"banana":1}}
+```
+
+
+## solution:
+
+```{python}
+choiceSet_try2 = [
+  {"apple": 1},
+  {"banana": 1}
+]
+```
+
+```{python}
+choiceSet_try2[0]
+choiceSet_try2[1]
+```
+
+## initiate an object
+
+```{r}
+newList = list()
+newVector = c()
+```
+
+```{python}
+newDict = dict({})
+newList = list([])
+```
+
+## encapsulation
+
+```{r}
+append(choiceSet_basic1,
+       list("peach"=3)) -> choiceSet_basic1
+```
+
+```{python}
+choiceSet_try2
+```
+
