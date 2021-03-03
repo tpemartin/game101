@@ -314,4 +314,69 @@ append(choiceSet_basic1,
 ```{python}
 choiceSet_try2
 ```
+## mutable
 
+```{r}
+X = c(3, 53)
+Y = X
+pryr::address(X)
+pryr::address(Y)
+```
+```{r}
+print(X)
+```
+
+```{r}
+X[[1]] = 44
+pryr::address(X)
+pryr::address(Y)
+```
+
+```{r}
+print(X)
+print(Y)
+```
+```{python}
+X = [3, 53]
+Y = X
+id(X)
+id(Y)
+```
+```{python}
+X[0] = 44
+id(X)
+
+print(X) # list is mutable
+print(Y) # Y因X改變也跟著改了。
+```
+
+```{python}
+X = [3, 53]
+Y = X.copy()
+id(X)
+id(Y)
+```
+```{python}
+X[0] = 44
+id(X)
+
+print(X)
+print(Y) # Y因X改變也跟著改了。
+```
+```{python}
+X = {"banana": 1, "apple": 3}
+Y = X.copy()
+
+X["banana"]=0
+print(X)
+print(Y)
+```
+
+```{python}
+X = {"banana": 1, "apple": 3}
+Y = X
+
+X["banana"]=0
+print(X)
+print(Y)
+```
